@@ -49,7 +49,7 @@ public:
 	@param hardwareSerial - Serial, Serial1, Serial2,... - an optional serial port, for example for Bluetooth communication
 	@param maxNumberOfBoards - maximum number of boards
 	*/
-	Mrm_ir_finder_can(Robot* robot = 0, uint8_t maxNumberOfBoards = 1);
+	Mrm_ir_finder_can(uint8_t maxNumberOfBoards = 1);
 
 	~Mrm_ir_finder_can();
 
@@ -61,8 +61,9 @@ public:
 	/** Read CAN Bus message into local variables
 	@param canId - CAN Bus id
 	@param data - 8 bytes from CAN Bus message.
+	@param length - number of data bytes
 	*/
-	bool messageDecode(uint32_t canId, uint8_t data[8]);
+bool messageDecode(CANMessage& message);
 	
 	/** Cumulative readings
 	@param receiverNumberInSensor - single IR receiver in mrm-ir-finder-can
